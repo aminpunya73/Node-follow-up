@@ -173,12 +173,14 @@ Hasilkan output JSON mengikut format wajib.
       text.includes("masuk rumah") ||
       text.includes("tengok bilik") ||
       text.includes("tgk bilik") ||
-      text.includes("boleh view") ||
-      text.includes("nak view") ||
-      text.includes("boleh tengok") ||
-      text.includes("boleh tgk") ||
-      text.includes("nak tengok") ||
-      text.includes("nak tgk") ||
+      ((!text.includes("list") && !text.includes("senarai") && !text.includes("katalog") && !text.includes("catalog")) && (
+        text.includes("boleh view") ||
+        text.includes("nak view") ||
+        text.includes("boleh tengok") ||
+        text.includes("boleh tgk") ||
+        text.includes("nak tengok") ||
+        text.includes("nak tgk")
+      )) ||
       text.includes("tengok luar") ||
       text.includes("tgk luar") ||
       text.includes("tengok keadaan") ||
@@ -237,10 +239,42 @@ Hasilkan output JSON mengikut format wajib.
       stage = "DISARING_AI";
       reply = `Smart choice 💼. Rumah lelong memang lubuk ROI tinggi kalau kena gayanya.\n\nBoleh share bajet pelaburan & sasaran penyewa (student / pekerja / pelancong)? Nanti saya senaraikan unit 'hot'.`;
     }
-    // 16. BUYER TANYA SENARAI UNIT SPESIFIK / CATALOG
-    else if (text.includes("senarai unit") || text.includes("unit specific") || text.includes("senarai rumah lelong") || text.includes("list rumah") || text.includes("link lelong") || text.includes("catalog")) {
+    // 16. BUYER TANYA SENARAI UNIT SPESIFIK / CATALOG / LIST RUMAH LELONG
+    else if (
+      text.includes("senarai rumah") ||
+      text.includes("list rumah") ||
+      text.includes("senarai unit") ||
+      text.includes("list unit") ||
+      text.includes("senarai lelong") ||
+      text.includes("list lelong") ||
+      text.includes("senarai hartanah") ||
+      text.includes("list hartanah") ||
+      text.includes("rumah yang dilelong") ||
+      text.includes("rumah yg dilelong") ||
+      text.includes("rumah dalam list") ||
+      text.includes("rumah dlm list") ||
+      text.includes("rumah lelong yang ada") ||
+      text.includes("rumah lelong yg ada") ||
+      text.includes("tengok list") ||
+      text.includes("tgk list") ||
+      text.includes("tengok senarai") ||
+      text.includes("tgk senarai") ||
+      text.includes("bagi list") ||
+      text.includes("bagi senarai") ||
+      text.includes("ada list") ||
+      text.includes("ada senarai") ||
+      text.includes("katalog") ||
+      text.includes("catalog") ||
+      text.includes("link lelong") ||
+      text.includes("link rumah") ||
+      text.includes("unit specific") ||
+      text.includes("unit spesifik") ||
+      text.includes("pilihan unit") ||
+      text.includes("pilihan rumah")
+    ) {
       interest = "Semakan Unit Spesifik";
-      reply = `Untuk semakan senarai unit lelongan terkini yang spesifik, Tuan/Puan boleh rujuk terus pangkalan data rasmi kami di sini 👇:\n${SPECIFIC_PROPERTY_URL}`;
+      stage = "SEMAK_POS_SITE_VISIT";
+      reply = `Untuk semakan senarai penuh unit rumah yang dilelong di Melaka, Tuan/Puan boleh klik dan rujuk terus pangkalan data rasmi kami di sini 👇:\n${SPECIFIC_PROPERTY_URL}\n\nJika ada mana-mana unit yang menarik minat Tuan/Puan, boleh kongsikan di sini untuk saya semakkan dokumen POS dan nilaian pasaran.`;
     }
     // 17. PROSPEK SUDAH BERI BAJET / LOKASI (KB-11)
     else if (this.extractBudget(text) || this.extractLocation(text)) {
