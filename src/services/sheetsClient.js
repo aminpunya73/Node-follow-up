@@ -62,6 +62,10 @@ class SheetsClient {
         });
       });
 
+      req.setTimeout(8000, () => {
+        req.destroy(new Error("Google Apps Script request timeout (8s)"));
+      });
+
       req.on("error", (err) => reject(err));
 
       if (payload && method === "POST") {
