@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM Rumah Lelong & AI WhatsApp Follow-Up</title>
+  <!-- Tailwind CSS & Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#0f172a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .kanban-col { min-height: 520px; max-height: 720px; overflow-y: auto; }
+    .custom-scroll::-webkit-scrollbar { width: 6px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans">
+
+  <!-- TOP NAVIGATION BAR -->
+  <header class="bg-brand-900 text-white shadow-md sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Logo & Tajuk -->
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center text-white text-xl shadow">
+          <i class="fa-solid fa-gavel"></i>
+        </div>
+        <div>
+          <h1 class="text-lg font-bold tracking-tight">LELONG CRM <span class="text-blue-400 font-normal">| AI Follow-Up</span></h1>
+          <p class="text-xs text-slate-300" id="headerAgency">Hartanah Lelong Specialist Malaysia</p>
+        </div>
+      </div>
+
+      <!-- Status WhatsApp, Lesen & Quick Actions -->
+      <div class="flex items-center space-x-4">
+        <!-- WhatsApp Status Pill -->
+        <div id="waStatusBadge" class="flex items-center space-x-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" id="waStatusDot"></span>
+          <span id="waStatusText">WhatsApp: Memuat...</span>
+        </div>
+
+        <!-- License Status Pill -->
+        <div id="licenseBadge" class="flex items-center space-x-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-300 border border-emerald-700">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span id="licenseStatusText">Lesen: Aktif</span>
+        </div>
+
+        <!-- Butang Tetapan -->
+        <button onclick="openSettingsModal()" class="p-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition" title="Tetapan Sistem">
+          <i class="fa-solid fa-gear text-lg"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full space-y-6">
+
+    <!-- BAR METRIK UTAMA (KPI CARDS) -->
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+      <!-- Total Leads -->
+      <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+        <div class="text-xs font-medium text-slate-500 uppercase">Jumlah Lead</div>
+        <div class="mt-2 text-2xl font-bold text-slate-900" id="metricTotal">0</div>
+        <div class="text-[11px] text-blue-600 mt-1 flex items-center">
+          <i class="fa-solid fa-users mr-1"></i> Keseluruhan
+        </div>
+      </div>
+
+      <!-- Disaring AI -->
+      <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+        <div class="text-xs font-medium text-slate-500 uppercase">Disaring AI</div>
+        <div class="mt-2 text-2xl font-bold text-indigo-600" id="metricDisaring">0</div>
+        <div class="text-[11px] text-indigo-500 mt-1 flex items-center">
+          <i class="fa-solid fa-robot mr-1"></i> Soal Jawab AI
+        </div>
+      </div>
+
+      <!-- Layak 10% Deposit -->
+      <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+        <div class="text-xs font-medium text-slate-500 uppercase">Layak (Deposit 10%)</div>
+        <div class="mt-2 text-2xl font-bold text-emerald-600" id="metricLayak">0</div>
+        <div class="text-[11px] text-emerald-600 mt-1 flex items-center">
+          <i class="fa-solid fa-money-bill-wave mr-1"></i> Bank Draft Sedia
+        </div>
+      </div>
+
+      <!-- Semak POS & Site Visit -->
+      <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+        <div class="text-xs font-medium text-slate-500 uppercase">Semak POS & Site</div>
+        <div class="mt-2 text-2xl font-bold text-amber-600" id="metricPOS">0</div>
+        <div class="text-[11px] text-amber-600 mt-1 flex items-center">
+          <i class="fa-solid fa-file-contract mr-1"></i> Tinjau Luar Unit
+        </div>
+      </div>
+
+      <!-- Daftar Bidaan -->
+      <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+        <div class="text-xs font-medium text-slate-500 uppercase">Daftar Bidaan</div>
+        <div class="mt-2 text-2xl font-bold text-purple-600" id="metricBidaan">0</div>
+        <div class="text-[11px] text-purple-600 mt-1 flex items-center">
+          <i class="fa-solid fa-hand-holding-dollar mr-1"></i> Mahkamah / Pelelong
+        </div>
+      </div>
+
+      <!-- Menang Lelong (Closed Won) -->
+      <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+        <div class="text-xs font-medium text-slate-500 uppercase">Menang Lelong</div>
+        <div class="mt-2 text-2xl font-bold text-green-700" id="metricMenang">0</div>
+        <div class="text-[11px] text-green-600 mt-1 flex items-center">
+          <i class="fa-solid fa-trophy mr-1"></i> Selesai Bidaan
+        </div>
+      </div>
+    </div>
+
+    <!-- WHATSAPP CONNECTION & AUTHENTICATION PANEL -->
+    <div id="waConnectBanner" class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between pb-3 border-b border-slate-100 gap-3">
+        <div>
+          <h2 class="text-base font-bold text-slate-900 flex items-center space-x-2">
+            <i class="fa-brands fa-whatsapp text-emerald-600 text-xl"></i>
+            <span>Sambungan Enjin WhatsApp (Baileys)</span>
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5" id="waInstruction">
+            Imbas Kod QR menggunakan WhatsApp di telefon anda untuk menyambung bot AI.
+          </p>
+        </div>
+
+        <div class="flex items-center space-x-2">
+          <!-- AI Auto-Reply Toggle -->
+          <label class="inline-flex items-center cursor-pointer bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200">
+            <input type="checkbox" id="autoReplyToggle" class="sr-only peer" checked onchange="toggleAutoReply()">
+            <div class="w-8 h-4 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-emerald-600"></div>
+            <span class="ml-2 text-xs font-semibold text-slate-700">AI Auto-Reply</span>
+          </label>
+
+          <!-- Reset Sesi -->
+          <button onclick="resetWhatsAppSession()" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-semibold rounded-lg border border-rose-200 transition flex items-center space-x-1" title="Padam sesi lama & buat kod baru">
+            <i class="fa-solid fa-trash-can"></i>
+            <span>Reset Kod QR</span>
+          </button>
+
+          <!-- Sambung Semula -->
+          <button onclick="reconnectWhatsApp()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg border border-slate-300 transition flex items-center space-x-1">
+            <i class="fa-solid fa-arrows-rotate"></i>
+            <span>Segerak Semula</span>
+          </button>
+
+          <!-- Tambah Lead Manual -->
+          <button onclick="openAddLeadModal()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg shadow-sm transition flex items-center space-x-1">
+            <i class="fa-solid fa-plus"></i>
+            <span>Lead Manual</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- KAWASAN IMBASAN KOD QR -->
+      <div id="authMethodsContainer" class="bg-slate-50 rounded-xl p-6 border border-slate-200 flex flex-col md:flex-row items-center justify-center gap-8">
+        
+        <!-- KOTAK KOD QR (BESAR & JELAS) -->
+        <div class="flex flex-col items-center space-y-3">
+          <div id="qrContainer" class="w-72 h-72 bg-white rounded-2xl p-3 border-2 border-slate-200 shadow-md flex items-center justify-center relative">
+            <div id="qrPlaceholder" class="text-slate-400 text-xs text-center space-y-2">
+              <i class="fa-solid fa-spinner fa-spin text-3xl text-blue-600"></i>
+              <p class="font-medium">Menjana Kod QR WhatsApp...</p>
+            </div>
+            <img id="qrImage" class="w-full h-full object-contain hidden rounded-xl" alt="WhatsApp QR Code">
+          </div>
+          <span class="text-[11px] font-semibold text-slate-500">
+            <i class="fa-solid fa-arrows-rotate text-blue-500 mr-1"></i>Kod QR diperbaharui secara automatik
+          </span>
+        </div>
+
+        <!-- PANDUAN LANGKAH DEMI LANGKAH -->
+        <div class="max-w-md space-y-4">
+          <div class="space-y-1">
+            <h3 class="text-sm font-bold text-slate-800">Cara Menyambungkan WhatsApp:</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Sambungkan nombor telefon WhatsApp ejen anda untuk membolehkan enjin AI Amin membalas mesej prospek secara automatik mengikut Knowledge Base.
+            </p>
+          </div>
+
+          <ol class="space-y-2.5 text-xs text-slate-700">
+            <li class="flex items-start space-x-2.5">
+              <span class="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">1</span>
+              <span>Buka aplikasi <strong>WhatsApp</strong> di telefon pintar anda.</span>
+            </li>
+            <li class="flex items-start space-x-2.5">
+              <span class="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">2</span>
+              <span>Tekan menu <strong>Settings</strong> (iPhone) atau <strong>ikon 3 titik di atas kanan</strong> (Android).</span>
+            </li>
+            <li class="flex items-start space-x-2.5">
+              <span class="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">3</span>
+              <span>Pilih <strong>Linked Devices</strong> (Peranti Berpaut) &gt; Tekan <strong>Link a Device</strong>.</span>
+            </li>
+            <li class="flex items-start space-x-2.5">
+              <span class="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">4</span>
+              <span>Halakan kamera telefon ke <strong>Kod QR</strong> di sebelah kiri.</span>
+            </li>
+          </ol>
+
+          <div class="bg-amber-50 border border-amber-200 rounded-lg p-2.5 text-[11px] text-amber-800 flex items-start space-x-2">
+            <i class="fa-solid fa-circle-exclamation text-amber-600 mt-0.5"></i>
+            <span>Jika telefon memaparkan "Couldn't link device", pastikan senarai Linked Devices di telefon anda tidak melebihi 4 peranti (log out salah satu peranti lama).</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- STATUS SUDAH BERSAMBUNG (CONNECTED BANNER) -->
+      <div id="connectedSuccessBanner" class="hidden bg-emerald-50 border border-emerald-300 rounded-xl p-4 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center text-lg">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-emerald-900">WhatsApp Berjaya Disambungkan!</h4>
+            <p class="text-xs text-emerald-700">Enjin Baileys aktif membalas pertanyaan prospek dan menjalankan drip follow-up secara selamat.</p>
+          </div>
+        </div>
+        <button onclick="resetWhatsAppSession()" class="px-3 py-1.5 bg-white hover:bg-emerald-100 text-emerald-800 text-xs font-semibold rounded-lg border border-emerald-300 shadow-2xs">
+          Putuskan / Tukar Nombor
+        </button>
+      </div>
+    </div>
+
+      <!-- STATUS SUDAH BERSAMBUNG (CONNECTED BANNER) -->
+      <div id="connectedSuccessBanner" class="hidden bg-emerald-50 border border-emerald-300 rounded-xl p-4 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center text-lg">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-emerald-900">WhatsApp Berjaya Disambungkan!</h4>
+            <p class="text-xs text-emerald-700">Enjin Baileys aktif membalas pertanyaan prospek dan menjalankan drip follow-up secara selamat.</p>
+          </div>
+        </div>
+        <button onclick="resetWhatsAppSession()" class="px-3 py-1.5 bg-white hover:bg-emerald-100 text-emerald-800 text-xs font-semibold rounded-lg border border-emerald-300 shadow-2xs">
+          Putuskan / Tukar Nombor
+        </button>
+      </div>
+    </div>
+      </div>
+    </div>
+
+    <!-- KANBAN BOARD SALURAN RUMAH LELONG -->
+    <div class="space-y-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <h2 class="text-base font-bold text-slate-800">Saluran Jualan Lelong (Kanban Pipeline)</h2>
+          <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full font-medium" id="kanbanCount">3 Prospek Aktif</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <button onclick="refreshLeads()" class="text-xs text-blue-600 hover:text-blue-800 font-medium flex items-center space-x-1">
+            <i class="fa-solid fa-rotate-right"></i>
+            <span>Segerak Google Sheet</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 custom-scroll overflow-x-auto pb-4">
+        
+        <!-- KOLUM 1: LEAD BARU -->
+        <div class="bg-white rounded-xl shadow-sm border-t-4 border-blue-500 p-3 flex flex-col kanban-col custom-scroll">
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
+            <span class="text-xs font-bold text-slate-700 uppercase">1. Lead Baru</span>
+            <span class="text-xs bg-blue-100 text-blue-800 font-semibold px-2 py-0.5 rounded-full" id="count-BARU">0</span>
+          </div>
+          <div class="space-y-3 flex-1" id="col-BARU"></div>
+        </div>
+
+        <!-- KOLUM 2: SEDANG DISARING AI -->
+        <div class="bg-white rounded-xl shadow-sm border-t-4 border-indigo-500 p-3 flex flex-col kanban-col custom-scroll">
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
+            <span class="text-xs font-bold text-slate-700 uppercase">2. Disaring AI</span>
+            <span class="text-xs bg-indigo-100 text-indigo-800 font-semibold px-2 py-0.5 rounded-full" id="count-DISARING_AI">0</span>
+          </div>
+          <div class="space-y-3 flex-1" id="col-DISARING_AI"></div>
+        </div>
+
+        <!-- KOLUM 3: LAYAK 10% DEPOSIT -->
+        <div class="bg-white rounded-xl shadow-sm border-t-4 border-emerald-500 p-3 flex flex-col kanban-col custom-scroll">
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
+            <span class="text-xs font-bold text-slate-700 uppercase">3. Layak (Ada 10%)</span>
+            <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded-full" id="count-LAYAK_10_DEPOSIT">0</span>
+          </div>
+          <div class="space-y-3 flex-1" id="col-LAYAK_10_DEPOSIT"></div>
+        </div>
+
+        <!-- KOLUM 4: SEMAK POS & SITE VISIT -->
+        <div class="bg-white rounded-xl shadow-sm border-t-4 border-amber-500 p-3 flex flex-col kanban-col custom-scroll">
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
+            <span class="text-xs font-bold text-slate-700 uppercase">4. Semak POS / Site</span>
+            <span class="text-xs bg-amber-100 text-amber-800 font-semibold px-2 py-0.5 rounded-full" id="count-SEMAK_POS_SITE_VISIT">0</span>
+          </div>
+          <div class="space-y-3 flex-1" id="col-SEMAK_POS_SITE_VISIT"></div>
+        </div>
+
+        <!-- KOLUM 5: DAFTAR BIDAAN -->
+        <div class="bg-white rounded-xl shadow-sm border-t-4 border-purple-500 p-3 flex flex-col kanban-col custom-scroll">
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
+            <span class="text-xs font-bold text-slate-700 uppercase">5. Bidding Day</span>
+            <span class="text-xs bg-purple-100 text-purple-800 font-semibold px-2 py-0.5 rounded-full" id="count-DAFTAR_BIDAAN">0</span>
+          </div>
+          <div class="space-y-3 flex-1" id="col-DAFTAR_BIDAAN"></div>
+        </div>
+
+        <!-- KOLUM 6: MENANG / KIV -->
+        <div class="bg-white rounded-xl shadow-sm border-t-4 border-green-600 p-3 flex flex-col kanban-col custom-scroll">
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
+            <span class="text-xs font-bold text-slate-700 uppercase">6. Menang / KIV</span>
+            <span class="text-xs bg-green-100 text-green-800 font-semibold px-2 py-0.5 rounded-full" id="count-MENANG_LELONG">0</span>
+          </div>
+          <div class="space-y-3 flex-1" id="col-MENANG_LELONG"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- LOG AKTIVITI & JADUAL DRIP -->
+    <div class="bg-white rounded-xl p-5 shadow-sm border border-slate-200">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <h3 class="text-sm font-bold text-slate-800 flex items-center space-x-2">
+          <i class="fa-solid fa-bolt text-amber-500"></i>
+          <span>Log Mesej & Kitaran Drip Follow-Up Masa Nyata</span>
+        </h3>
+        <span class="text-xs text-slate-500">WebSocket Bersambung</span>
+      </div>
+      <div id="activityLogs" class="mt-3 space-y-2 max-h-48 overflow-y-auto custom-scroll text-xs">
+        <div class="text-slate-500 italic">Sistem sedia menerima pertanyaan prospek...</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- MODAL: TETAPAN SISTEM & LESEN -->
+  <div id="settingsModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b pb-3">
+        <h3 class="text-base font-bold text-slate-900 flex items-center space-x-2">
+          <i class="fa-solid fa-sliders text-blue-600"></i>
+          <span>Tetapan Sistem & Pengesahan Lesen</span>
+        </h3>
+        <button onclick="closeSettingsModal()" class="text-slate-400 hover:text-slate-600">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <!-- Machine ID Komputer -->
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Hardware Machine ID Komputer Anda:</label>
+          <div class="flex items-center space-x-2">
+            <input type="text" id="settingMachineId" readonly class="w-full bg-slate-100 border border-slate-300 rounded-lg px-3 py-2 font-mono text-slate-600 select-all">
+            <button onclick="copyMachineId()" class="px-3 py-2 bg-slate-200 hover:bg-slate-300 rounded-lg font-medium text-slate-700 shrink-0">
+              Salin
+            </button>
+          </div>
+          <p class="text-[10px] text-slate-500 mt-0.5">ID ini digunakan untuk mengunci lesen perisian ke komputer ini sahaja.</p>
+        </div>
+
+        <!-- Kunci Lesen -->
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Kunci Lesen (License Key):</label>
+          <input type="text" id="settingLicenseKey" placeholder="LELONG-PRO-XXXX-XXXX" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+        </div>
+
+        <!-- Google Apps Script URL -->
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Google Apps Script Web App URL (Pangkalan Data):</label>
+          <input type="text" id="settingScriptUrl" placeholder="https://script.google.com/macros/s/.../exec" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+          <p class="text-[10px] text-slate-500 mt-0.5">Dapatkan URL ini selepas Deploy Web App di Google Sheet anda.</p>
+        </div>
+
+        <!-- Gemini API Key -->
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Google Gemini API Key:</label>
+          <input type="password" id="settingGeminiKey" placeholder="AIzaSy..." class="w-full border border-slate-300 rounded-lg px-3 py-2">
+          <p class="text-[10px] text-slate-500 mt-0.5">Digunakan untuk menganalisis soalan & menyaring deposit 10% prospek.</p>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t flex justify-end space-x-3">
+        <button onclick="closeSettingsModal()" class="px-4 py-2 border rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-50">Tutup</button>
+        <button onclick="saveSettings()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow">Simpan & Sahkan Lesen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: TAMBAH LEAD MANUAL -->
+  <div id="addLeadModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b pb-3">
+        <h3 class="text-base font-bold text-slate-900 flex items-center space-x-2">
+          <i class="fa-solid fa-user-plus text-emerald-600"></i>
+          <span>Tambah Prospek Lelong Manual</span>
+        </h3>
+        <button onclick="closeAddLeadModal()" class="text-slate-400 hover:text-slate-600">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Nama Penuh Prospek:</label>
+          <input type="text" id="newLeadName" placeholder="Contoh: Encik Khairul" class="w-full border rounded-lg px-3 py-2">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">No. Telefon WhatsApp (dengan kod negara):</label>
+          <input type="text" id="newLeadPhone" placeholder="Contoh: 60123456789" class="w-full border rounded-lg px-3 py-2">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Jenis / Nama Hartanah Lelong:</label>
+          <input type="text" id="newLeadProperty" placeholder="Contoh: Kondo Vista Alam / Teres Shah Alam" class="w-full border rounded-lg px-3 py-2">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Anggaran Bajet Prospek:</label>
+          <input type="text" id="newLeadBudget" placeholder="Contoh: RM 300,000" class="w-full border rounded-lg px-3 py-2">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Status Deposit 10% Tunai (Bank Draft):</label>
+          <select id="newLeadDeposit" class="w-full border rounded-lg px-3 py-2">
+            <option value="Ya (Ada Tunai 10%)">Ya (Ada Tunai 10%)</option>
+            <option value="Belum Pasti (Tanya Full Loan)">Belum Pasti (Tanya Full Loan)</option>
+            <option value="Belum Sedia (Perlukan Masa)">Belum Sedia (Perlukan Masa)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t flex justify-end space-x-3">
+        <button onclick="closeAddLeadModal()" class="px-4 py-2 border rounded-lg text-xs font-semibold text-slate-600">Batal</button>
+        <button onclick="submitNewLead()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold shadow">Daftar Prospek</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT LOGIK APLIKASI -->
+  <script src="/js/app.js"></script>
+</body>
+</html>

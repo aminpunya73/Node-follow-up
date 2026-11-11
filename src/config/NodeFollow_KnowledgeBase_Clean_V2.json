@@ -1,0 +1,162 @@
+{
+  "source": "NodeFollow_KnowledgeBase_Clean_V2.xlsx",
+  "bot_name": "Asisten Rumah Lelong Melaka (Amin)",
+  "records": [
+    {
+      "Arahan": "Untuk customer baru",
+      "Standard Reply / Maklumat Jawapan": "Hai 👋, saya Amin – Pakar Rumah Lelong Melaka."
+    },
+    {
+      "Arahan": "Untuk customer baru",
+      "Standard Reply / Maklumat Jawapan": "Untuk mudahkan saya bantu, boleh pilih tujuan anda dengan reply nombor di bawah 👇:"
+    },
+    {
+      "Arahan": "Untuk customer baru",
+      "Standard Reply / Maklumat Jawapan": "1️⃣ Cari rumah lelong untuk duduk sendiri"
+    },
+    {
+      "Arahan": "Untuk customer baru",
+      "Standard Reply / Maklumat Jawapan": "2️⃣ Cari rumah lelong untuk pelaburan"
+    },
+    {
+      "Arahan": "Untuk customer baru",
+      "Standard Reply / Maklumat Jawapan": "3️⃣ Nak tahu info & proses lelong"
+    },
+    {
+      "Arahan": "Pilihan 1",
+      "Standard Reply / Maklumat Jawapan": "Baik 👍, nak beli untuk kediaman."
+    },
+    {
+      "Arahan": "Pilihan 1",
+      "Standard Reply / Maklumat Jawapan": "Boleh share detail ni supaya saya boleh filter unit sesuai untuk anda:"
+    },
+    {
+      "Arahan": "Pilihan 1",
+      "Standard Reply / Maklumat Jawapan": "✅ Bajet anda berapa"
+    },
+    {
+      "Arahan": "Pilihan 1",
+      "Standard Reply / Maklumat Jawapan": "✅ Lokasi yang anda minat"
+    },
+    {
+      "Arahan": "Pilihan 2",
+      "Standard Reply / Maklumat Jawapan": "Smart choice 💼. Saya boleh bantu cari rumah lelong bawah market value yang sesuai untuk ROI tinggi."
+    },
+    {
+      "Arahan": "Pilihan 2",
+      "Standard Reply / Maklumat Jawapan": "Boleh share bajet pelaburan & lokasi pilihan, nanti saya suggest unit terbaik."
+    },
+    {
+      "Arahan": "soalan 1 perlu ditanya",
+      "Standard Reply / Maklumat Jawapan": "bercadang nak beli guna loan bank, LPPSA atau tunai?"
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "Ok. Nak beli rumah lelong ada step dia."
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "💰 Step 1: Semak Simpanan Anda"
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "Pastikan anda mempunyai modal secukupnya untuk:"
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "✅ Deposit 10% – Bayar sebelum bidaan."
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "✅ Kos tambahan 10% – Stamp duty, yuran guaman, caj konsultasi, dll."
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "💡 Tip: Sediakan anggaran 20% dari harga rumah sebagai modal permulaan."
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "🏦 Step 2: Siapkan Profil Untuk Home Loan"
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "📌 Pastikan dokumen kewangan anda kukuh untuk memohon pinjaman rumah."
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "✅ Slip gaji 3 bulan terkini"
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "✅ Penyata bank"
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "✅ CCRIS/CTOS bersih"
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "🏡 Step 3 :  Dapatkan dokumen POS  dan site visit sebelum masuk lelong (penting)"
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "✅️cek bil tertunggak ( cth api, air , maintainance, cukai pintu dan etc)"
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "✅️cek caveat ( beli secara cash shj)"
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "✅️Register dgn pelelong."
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "✅️ Deposit 10% selewatnya 2 hari sebelum tarikh lelong"
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "Selepas ni ada step lain lagi. Cuba tuan cek  step 1 dan 2 dulu"
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "Jangan risau, saya akan guide step by step cara join auction."
+    },
+    {
+      "Arahan": "Pilihan 3",
+      "Standard Reply / Maklumat Jawapan": "Saya ada tips & panduan ringkas untuk anda 👇 https://zonlelong.com/sedia/?aff=295"
+    },
+    {
+      "Arahan": "Soalan Buyer: Kos Tersembunyi",
+      "Standard Reply / Maklumat Jawapan": "Selain deposit 10%, kos tambahan termasuk yuran guaman (SPA & Loan), duti setem, cukai taksiran/cukai tanah tertunggak, dan bil utiliti tertunggak (air, elektrik, penyelenggaraan) yang ditanggung pembeli."
+    },
+    {
+      "Arahan": "Soalan Buyer: Status Penghuni",
+      "Standard Reply / Maklumat Jawapan": "Rumah lelong dijual 'seadanya' (as-is-where-is). Jika masih ada penghuni, pembeli perlu uruskan proses pengosongan sendiri selepas pindah milik selesai."
+    },
+    {
+      "Arahan": "Soalan Buyer: Cara Masuk Bidaan",
+      "Standard Reply / Maklumat Jawapan": "Bidaan boleh dibuat secara Online (E-Lelong) atau Fizikal di lokasi lelongan mengikut arahan perisytiharan jualan (POS)."
+    },
+    {
+      "Arahan": "Soalan Buyer: Pinjaman Perumahan",
+      "Standard Reply / Maklumat Jawapan": "Ya, anda boleh guna loan bank atau LPPSA. Pastikan kelayakan pinjaman anda mencukupi dan sediakan tunai untuk baki bayaran dalam tempoh 90/120 hari."
+    },
+    {
+      "Arahan": "Soalan Buyer: Lawatan Dalam Rumah",
+      "Standard Reply / Maklumat Jawapan": "Untuk rumah lelong, lawatan hanya boleh dilakukan dari luar sahaja kerana rumah biasanya masih dikunci atau berpenghuni."
+    },
+    {
+      "Arahan": "Soalan Buyer: Pembatalan Lelong",
+      "Standard Reply / Maklumat Jawapan": "Lelongan boleh dibatalkan pada saat akhir jika pemilik menjelaskan tunggakan atau kes selesai di mahkamah/bank. Deposit anda akan dipulangkan semula."
+    },
+    {
+      "Arahan": "Soalan Buyer: Cara Bayar Deposit",
+      "Standard Reply / Maklumat Jawapan": "Deposit 10% dibayar sama ada melalui Bank Draft atas nama bank berkenaan atau pindahan atas talian mengikut syarat platform pelelong, selewat-lewatnya 1-2 hari sebelum tarikh bidaan."
+    },
+    {
+      "Arahan": "Jawapan terakhir jika tak dapat jawab soalan",
+      "Standard Reply / Maklumat Jawapan": "Baik, saya akan sambungkan pertanyaan Cik/Tuan kepada advisor dari ZonLelong untuk semakan dan tindakan seterusnya."
+    }
+  ]
+}

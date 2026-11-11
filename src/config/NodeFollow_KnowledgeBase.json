@@ -1,0 +1,170 @@
+{
+  "bot_name": "Asisten Rumah Lelong Melaka (Amin)",
+  "knowledge_base": [
+    {
+      "index": 1,
+      "intent": "Untuk customer baru",
+      "response": "Hai 👋, saya Amin – Pakar Rumah Lelong Melaka."
+    },
+    {
+      "index": 2,
+      "intent": "Untuk customer baru",
+      "response": "Untuk mudahkan saya bantu, boleh pilih tujuan anda dengan reply nombor di bawah 👇:"
+    },
+    {
+      "index": 3,
+      "intent": "Untuk customer baru",
+      "response": "1️⃣ Cari rumah lelong untuk duduk sendiri"
+    },
+    {
+      "index": 4,
+      "intent": "Untuk customer baru",
+      "response": "2️⃣ Cari rumah lelong untuk pelaburan"
+    },
+    {
+      "index": 5,
+      "intent": "Untuk customer baru",
+      "response": "3️⃣ Nak tahu info & proses lelong"
+    },
+    {
+      "index": 7,
+      "intent": "Pilihan 1",
+      "response": "Baik 👍, nak beli untuk kediaman."
+    },
+    {
+      "index": 8,
+      "intent": "Pilihan 1",
+      "response": "Boleh share detail ni supaya saya boleh filter unit sesuai untuk anda:"
+    },
+    {
+      "index": 9,
+      "intent": "Pilihan 1",
+      "response": "✅ Bajet anda berapa"
+    },
+    {
+      "index": 10,
+      "intent": "Pilihan 1",
+      "response": "✅ Lokasi yang anda minat"
+    },
+    {
+      "index": 12,
+      "intent": "Pilihan 2",
+      "response": "Smart choice 💼. Saya boleh bantu cari rumah lelong bawah market value yang sesuai untuk ROI tinggi."
+    },
+    {
+      "index": 13,
+      "intent": "Pilihan 2",
+      "response": "Boleh share bajet pelaburan & lokasi pilihan, nanti saya suggest unit terbaik."
+    },
+    {
+      "index": 15,
+      "intent": "Pilihan 3",
+      "response": "Jangan risau, saya akan guide step by step cara join auction."
+    },
+    {
+      "index": 16,
+      "intent": "Pilihan 3",
+      "response": "Saya ada tips & panduan ringkas untuk anda 👇 https://zonlelong.com/sedia/?aff=295"
+    },
+    {
+      "index": 18,
+      "intent": "soalan 1 perlu ditanya",
+      "response": "bercadang nak beli guna loan bank, LPPSA atau tunai?"
+    },
+    {
+      "index": 20,
+      "intent": "soalan 2 perlu ditanya",
+      "response": "Bajet dan lokasi pilihan tuan?"
+    },
+    {
+      "index": 22,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "Ok. Nak beli rumah lelong ada step dia."
+    },
+    {
+      "index": 24,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "💰 Step 1: Semak Simpanan Anda"
+    },
+    {
+      "index": 25,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "Pastikan anda mempunyai modal secukupnya untuk:"
+    },
+    {
+      "index": 26,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "✅ Deposit 10% – Bayar sebelum bidaan."
+    },
+    {
+      "index": 27,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "✅ Kos tambahan 10% – Stamp duty, yuran guaman, caj konsultasi, dll."
+    },
+    {
+      "index": 28,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "💡 Tip: Sediakan anggaran 20% dari harga rumah sebagai modal permulaan."
+    },
+    {
+      "index": 30,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "🏦 Step 2: Siapkan Profil Untuk Home Loan"
+    },
+    {
+      "index": 31,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "📌 Pastikan dokumen kewangan anda kukuh untuk memohon pinjaman rumah."
+    },
+    {
+      "index": 32,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "✅ Slip gaji 3 bulan terkini"
+    },
+    {
+      "index": 33,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "✅ Penyata bank"
+    },
+    {
+      "index": 34,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "✅ CCRIS/CTOS bersih"
+    },
+    {
+      "index": 36,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "🏡 Step 3 :  Dapatkan dokumen POS  dan site visit sebelum masuk lelong (penting)"
+    },
+    {
+      "index": 37,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "✅️cek bil tertunggak ( cth api, air , maintainance, cukai pintu dan etc)"
+    },
+    {
+      "index": 38,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "✅️cek caveat ( beli secara cash shj)"
+    },
+    {
+      "index": 39,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "✅️Register dgn pelelong."
+    },
+    {
+      "index": 40,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "✅️ Deposit 10% selewatnya 2 hari sebelum tarikh lelong"
+    },
+    {
+      "index": 42,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "Selepas ni ada step lain lagi. Cuba tuan cek  step 1 dan 2 dulu"
+    },
+    {
+      "index": 45,
+      "intent": "Terangkan 3 step utama sebelum masuk lelong",
+      "response": "Baik, saya akan sambungkan pertanyaan Cik/Tuan kepada advisor dari ZonLelong untuk semakan dan tindakan seterusnya."
+    }
+  ]
+}

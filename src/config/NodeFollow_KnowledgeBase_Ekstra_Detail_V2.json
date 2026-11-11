@@ -1,0 +1,294 @@
+{
+  "source": "NodeFollow_KnowledgeBase_Ekstra_Detail_V2.xlsx",
+  "bot_name": "Asisten Rumah Lelong Melaka (Amin)",
+  "total_scripts": 41,
+  "scripts": [
+    {
+      "id": "KB-01",
+      "category": "01. Onboarding / Sapaan",
+      "trigger": "Alu-aluan Customer Baru",
+      "reply": "Hai 👋, saya Amin – Pakar Rumah Lelong Melaka.",
+      "logic": "Sapaan pembuka mesra & perkenalkan diri sebagai konsultan hartanah lelong Melaka."
+    },
+    {
+      "id": "KB-02",
+      "category": "01. Onboarding / Sapaan",
+      "trigger": "Alu-aluan Customer Baru",
+      "reply": "Biar saya bantu anda dapatkan rumah idaman pada harga bawah pasaran. Boleh pilih tujuan anda 👇:",
+      "logic": "Pamerkan tawaran nilai (value proposition) & jemput prospek memilih objektif."
+    },
+    {
+      "id": "KB-03",
+      "category": "02. Menu Utama",
+      "trigger": "Pilihan Utama",
+      "reply": "1️⃣ Cari rumah lelong untuk duduk sendiri",
+      "logic": "Pilihan 1: Halakan ke alur saringan rumah kediaman sendiri."
+    },
+    {
+      "id": "KB-04",
+      "category": "02. Menu Utama",
+      "trigger": "Pilihan Utama",
+      "reply": "2️⃣ Cari rumah lelong untuk pelaburan",
+      "logic": "Pilihan 2: Halakan ke alur strategi & ROI pelaburan sewaan."
+    },
+    {
+      "id": "KB-05",
+      "category": "02. Menu Utama",
+      "trigger": "Pilihan Utama",
+      "reply": "3️⃣ Nak fahamkan info & proses lelong",
+      "logic": "Pilihan 3: Halakan terus ke panduan komprehensif Step 1 hingga Step 5."
+    },
+    {
+      "id": "KB-06",
+      "category": "03. Alur Pilihan 1 (Duduk Sendiri)",
+      "trigger": "Alur Pilihan 1 (Duduk Sendiri)",
+      "reply": "Baik 👍, nak beli untuk kediaman sendiri.",
+      "logic": "Pengesahan pilihan prospek untuk kediaman sendiri."
+    },
+    {
+      "id": "KB-07",
+      "category": "03. Alur Pilihan 1 (Duduk Sendiri)",
+      "trigger": "Alur Pilihan 1 (Duduk Sendiri)",
+      "reply": "Boleh kongsikan sikit supaya saya boleh filter unit yang paling 'ngam':",
+      "logic": "Minta kebenaran untuk menapis unit mengikut profil prospek."
+    },
+    {
+      "id": "KB-08",
+      "category": "03. Alur Pilihan 1 (Duduk Sendiri)",
+      "trigger": "Alur Pilihan 1 (Duduk Sendiri)",
+      "reply": "✅ Jenis rumah? (Teres / Semi-D / Apartment)",
+      "logic": "Soalan penapis 1: Kategori hartanah pilihan."
+    },
+    {
+      "id": "KB-09",
+      "category": "03. Alur Pilihan 1 (Duduk Sendiri)",
+      "trigger": "Alur Pilihan 1 (Duduk Sendiri)",
+      "reply": "✅ Bajet maksimum anda?",
+      "logic": "Soalan penapis 2: Had siling kemampuan kewangan/harga rumah."
+    },
+    {
+      "id": "KB-10",
+      "category": "03. Alur Pilihan 1 (Duduk Sendiri)",
+      "trigger": "Alur Pilihan 1 (Duduk Sendiri)",
+      "reply": "✅ Daerah pilihan di Melaka? (Melaka Tengah / Alor Gajah / Jasin)",
+      "logic": "Soalan penapis 3: Lokasi geografi yang disasarkan."
+    },
+    {
+      "id": "KB-11",
+      "category": "04. Soalan Kelayakan Kewangan",
+      "trigger": "Alur Pilihan 1 & 2 (Soalan Kewangan)",
+      "reply": "Bercadang nak beli guna loan bank, LPPSA atau tunai?",
+      "logic": "Tanya kaedah pembiayaan (Trigger point untuk Logik Khas Loan/LPPSA)."
+    },
+    {
+      "id": "KB-12",
+      "category": "05. Alur Pilihan 2 (Pelaburan)",
+      "trigger": "Alur Pilihan 2 (Pelaburan)",
+      "reply": "Smart choice 💼. Rumah lelong memang lubuk ROI tinggi kalau kena gayanya.",
+      "logic": "Pengesahan positif untuk pelabur hartanah & peneguhan ROI."
+    },
+    {
+      "id": "KB-13",
+      "category": "05. Alur Pilihan 2 (Pelaburan)",
+      "trigger": "Alur Pilihan 2 (Pelaburan)",
+      "reply": "Boleh share bajet pelaburan & sasaran penyewa (student / pekerja / pelancong)? Nanti saya senaraikan unit 'hot'.",
+      "logic": "Kumpul profil penyewa sasaran sebelum menyenaraikan unit bersesuaian."
+    },
+    {
+      "id": "KB-14",
+      "category": "⚡ Logik Khas (Loan / LPPSA)",
+      "trigger": "Jika Pelanggan Jawab \"Loan\" ATAU \"LPPSA\" (Trigger Sama Seperti Pilihan 3)",
+      "reply": "Baik, memandangkan anda ingin guna kemudahan pinjaman, persediaan kena lebih rapi. Ini ringkasan padat proses beli rumah lelong dari A sampai Z:",
+      "logic": "⚡ TRIGGER KHAS: Jika prospek respon 'Loan' atau 'LPPSA', bot pintas ke skrip ini & teruskan ke Step 1 - Step 5 (Sama seperti Pilihan 3)."
+    },
+    {
+      "id": "KB-15",
+      "category": "06. Alur Pilihan 3 (Proses A-Z Lelong)",
+      "trigger": "Alur Pilihan 3 (Proses Lelong)",
+      "reply": "Ok, ini ringkasan padat proses beli rumah lelong dari A sampai Z:",
+      "logic": "Permulaan alur penerangan proses lelong untuk pemohon Pilihan 3 biasa."
+    },
+    {
+      "id": "KB-16",
+      "category": "07. Step 1 (Modal Permulaan)",
+      "trigger": "Step 1: Modal & Simpanan",
+      "reply": "💰 Step 1: Sediakan Modal Permulaan (Kira-kira 20% dari harga rizab).",
+      "logic": "Penerangan keperluan asas modal tunai 20% sebelum membida."
+    },
+    {
+      "id": "KB-17",
+      "category": "07. Step 1 (Modal Permulaan)",
+      "trigger": "Step 1: Modal & Simpanan",
+      "reply": "👉 10% Deposit (Wajib untuk daftar bidaan).",
+      "logic": "Penjelasan pecahan deposit wajib 10% untuk pendaftaran bidaan."
+    },
+    {
+      "id": "KB-18",
+      "category": "07. Step 1 (Modal Permulaan)",
+      "trigger": "Step 1: Modal & Simpanan",
+      "reply": "👉 10% Kos Tambahan (Yuran guaman SPA/Loan, duti setem, yuran penilai).",
+      "logic": "Penjelasan pecahan 10% kos sampingan guaman, duti & penilaian."
+    },
+    {
+      "id": "KB-19",
+      "category": "08. Step 2 (Kelayakan Pinjaman)",
+      "trigger": "Step 2: Kelayakan Pinjaman",
+      "reply": "🏦 Step 2: Semak Kelayakan Loan / LPPSA.",
+      "logic": "Penegasan semakan DSR & kelayakan pinjaman bank/kerajaan."
+    },
+    {
+      "id": "KB-20",
+      "category": "08. Step 2 (Kelayakan Pinjaman)",
+      "trigger": "Step 2: Kelayakan Pinjaman",
+      "reply": "👉 Sediakan slip gaji 3-6 bulan & penyata bank terkini.",
+      "logic": "Senarai dokumen sokongan pendapatan yang diperlukan bank/LPPSA."
+    },
+    {
+      "id": "KB-21",
+      "category": "08. Step 2 (Kelayakan Pinjaman)",
+      "trigger": "Step 2: Kelayakan Pinjaman",
+      "reply": "👉 Pastikan CCRIS/CTOS cantik (tiada tunggakan lebih 2 bulan).",
+      "logic": "Peringatan disiplin rekod kredit elak permohonan pinjaman ditolak."
+    },
+    {
+      "id": "KB-22",
+      "category": "09. Step 3 (Semakan Hartanah)",
+      "trigger": "Step 3: Semakan Hartanah",
+      "reply": "🏡 Step 3: Dapatkan POS (Perisytiharan Jualan) & Lawatan Tapak.",
+      "logic": "Panduan semakan dokumen Proclamation of Sale & tinjauan fizikal."
+    },
+    {
+      "id": "KB-23",
+      "category": "09. Step 3 (Semakan Hartanah)",
+      "trigger": "Step 3: Semakan Hartanah",
+      "reply": "👉 Kita akan semak status Kaveat di Pejabat Tanah (kalau ada kaveat, tak boleh guna loan).",
+      "logic": "Peringatan kritikal: Pinjaman automatik gagal jika terdapat kaveat pendaftar/persendirian."
+    },
+    {
+      "id": "KB-24",
+      "category": "09. Step 3 (Semakan Hartanah)",
+      "trigger": "Step 3: Semakan Hartanah",
+      "reply": "👉 Semak bil tertunggak (cukai pintu, cukai tanah, utiliti, maintenance).",
+      "logic": "Semakan liabiliti tertunggak yang perlu diselesaikan pembeli."
+    },
+    {
+      "id": "KB-25",
+      "category": "10. Step 4 (Pendaftaran & Bidaan)",
+      "trigger": "Step 4: Pendaftaran & Bidaan",
+      "reply": "⚖️ Step 4: Pendaftaran Bidaan.",
+      "logic": "Proses rasmi pendaftaran pembida di mahkamah atau portal online."
+    },
+    {
+      "id": "KB-26",
+      "category": "10. Step 4 (Pendaftaran & Bidaan)",
+      "trigger": "Step 4: Pendaftaran & Bidaan",
+      "reply": "👉 Sediakan Bank Draft 10% atau FPX. Jika kalah bida, deposit pulang 100% tanpa caj.",
+      "logic": "Jaminan pemulangan wang deposit penuh 100% jika tewas dalam lelongan."
+    },
+    {
+      "id": "KB-27",
+      "category": "11. Step 5 (Menang Bidaan)",
+      "trigger": "Step 5: Selepas Berjaya (Menang)",
+      "reply": "🎉 Step 5: Jika Menang Bidaan.",
+      "logic": "Tindakan segera sejurus tukul diketuk memihak kepada pembida."
+    },
+    {
+      "id": "KB-28",
+      "category": "11. Step 5 (Menang Bidaan)",
+      "trigger": "Step 5: Selepas Berjaya (Menang)",
+      "reply": "👉 Sign Kontrak Jualan (COS) on the spot.",
+      "logic": "Menandatangani Contract of Sale (COS) sebagai bukti sah pemilikan."
+    },
+    {
+      "id": "KB-29",
+      "category": "11. Step 5 (Menang Bidaan)",
+      "trigger": "Step 5: Selepas Berjaya (Menang)",
+      "reply": "👉 Selesaikan baki 90% bayaran dalam masa 90 atau 120 hari (guna tunai/loan).",
+      "logic": "Kira detik waktu genting 90/120 hari untuk penyelesaian pinjaman/tunai."
+    },
+    {
+      "id": "KB-30",
+      "category": "12. Panduan & Tips Khidmat",
+      "trigger": "Panduan & Tips Tambahan",
+      "reply": "Jangan risau, saya akan guide dari mula sampai dapat kunci. Ada soalan lain? Boleh tanya je.",
+      "logic": "Penutup alur proses dengan tawaran bantuan penuh & sedia menjawab soalan."
+    },
+    {
+      "id": "KB-31",
+      "category": "13. FAQ Pembeli (Soalan Lazim)",
+      "trigger": "FAQ Buyer: Boleh keluar KWSP?",
+      "reply": "Ya, boleh! Pengeluaran KWSP Akaun 2 dibenarkan untuk pembelian rumah lelong, tapi perlu bayar guna duit sendiri dulu untuk deposit 10%, kemudian claim balik dari KWSP guna dokumen COS.",
+      "logic": "FAQ 01: Prosedur tuntutan semula bayaran deposit melalui KWSP Akaun 2."
+    },
+    {
+      "id": "KB-32",
+      "category": "13. FAQ Pembeli (Soalan Lazim)",
+      "trigger": "FAQ Buyer: Boleh Full Loan / Mark-up?",
+      "reply": "Rumah lelong TAK BOLEH mark-up loan. Margin pembiayaan maksimum adalah 90% dari harga belian (menang bidaan), bukan dari nilai pasaran (market value).",
+      "logic": "FAQ 02: Had margin pembiayaan 90% dari harga belian sebenar."
+    },
+    {
+      "id": "KB-33",
+      "category": "13. FAQ Pembeli (Soalan Lazim)",
+      "trigger": "FAQ Buyer: Status Penghuni / Penyewa",
+      "reply": "Rumah dijual secara 'As-Is-Where-Is' (seadanya). Jika ada penghuni, pemilik baru (anda) perlu beri notis pengosongan. Jika ingkar, kita boleh apply arahan mahkamah (Distress Act).",
+      "logic": "FAQ 03: Hak pemilik baharu dan prosedur undang-undang pengosongan rumah."
+    },
+    {
+      "id": "KB-34",
+      "category": "13. FAQ Pembeli (Soalan Lazim)",
+      "trigger": "FAQ Buyer: Kaveat / Caveat",
+      "reply": "Jika rumah ada kaveat (halangan), bank takkan luluskan loan. Rumah berkaveat HANYA BOLEH dibeli menggunakan wang tunai (cash buyer).",
+      "logic": "FAQ 04: Larangan pinjaman bank bagi hartanah mempunyai kaveat."
+    },
+    {
+      "id": "KB-35",
+      "category": "13. FAQ Pembeli (Soalan Lazim)",
+      "trigger": "FAQ Buyer: Kos Tersembunyi",
+      "reply": "Selain harga rumah, pembeli tanggung yuran guaman, duti setem, cukai tertunggak (pintu/tanah), dan caj utiliti tertunggak (bergantung kepada syarat POS - ada bank yang tanggung sebahagian).",
+      "logic": "FAQ 05: Senarai perbelanjaan sampingan & semakan terma bayaran balik bank."
+    },
+    {
+      "id": "KB-36",
+      "category": "13. FAQ Pembeli (Soalan Lazim)",
+      "trigger": "FAQ Buyer: Lawatan ke Dalam Rumah",
+      "reply": "MAAF, kita tak boleh masuk ke dalam rumah lelong. Lawatan fizikal (site visit) hanya dibenarkan dari luar pagar rumah sahaja.",
+      "logic": "FAQ 06: Peraturan keselamatan & undang-undang lawatan tapak lelong."
+    },
+    {
+      "id": "KB-37",
+      "category": "13. FAQ Pembeli (Soalan Lazim)",
+      "trigger": "FAQ Buyer: Kerosakan Dalaman",
+      "reply": "Oleh kerana tak boleh masuk, segala kerosakan dalaman (paip, wiring, bumbung bocor) adalah di bawah tanggungan pembeli sepenuhnya. Bajet sikit untuk kos 'repair'.",
+      "logic": "FAQ 07: Nasihat pengurusan risiko dan penyediaan bajet pembaikan kerosakan."
+    },
+    {
+      "id": "KB-38",
+      "category": "13. FAQ Pembeli (Soalan Lazim)",
+      "trigger": "FAQ Buyer: Joint Name / Nama Bersama",
+      "reply": "Boleh, tapi kedua-dua penama wajib mendaftar sebagai pembida dan hadir semasa bidaan (atau hantar wakil dengan surat kuasa wakil / PA).",
+      "logic": "FAQ 08: Syarat kehadiran & dokumentasi bagi permohonan bersama."
+    },
+    {
+      "id": "KB-39",
+      "category": "13. FAQ Pembeli (Soalan Lazim)",
+      "trigger": "FAQ Buyer: Batal Lelong (Call-off)",
+      "reply": "Lelongan boleh ditarik balik oleh bank pada saat akhir jika owner asal bayar tunggakan. Jika ini berlaku, deposit anda dipulangkan 100%.",
+      "logic": "FAQ 09: Perlindungan pembida dan proses pembatalan lelong saat akhir."
+    },
+    {
+      "id": "KB-40",
+      "category": "13. FAQ Pembeli (Soalan Lazim)",
+      "trigger": "FAQ Buyer: Tempoh Tukar Nama",
+      "reply": "Proses tukar nama biasanya ambil masa 3 hingga 6 bulan bergantung kepada kecekapan peguam, pejabat tanah, dan kelulusan pinjaman anda.",
+      "logic": "FAQ 10: Jangka masa realistik penukaran hak milik dan serahan kunci."
+    },
+    {
+      "id": "KB-41",
+      "category": "14. Fallback & Eskalasi",
+      "trigger": "Fallback / Tiada Jawapan",
+      "reply": "Menarik soalan ni. Biar saya rujuk pada penasihat senior ZonLelong untuk pastikan fakta tepat, dan saya akan update Cik/Tuan semula secepat mungkin.",
+      "logic": "Protokol eskalasi: Maklum balas automatik & notifikasi kepada perunding manusia."
+    }
+  ]
+}
