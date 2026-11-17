@@ -5,6 +5,7 @@ const {
   ZONLELONG_GUIDE_URL 
 } = require("../config/auctionPrompts");
 const https = require("https");
+const listingsManager = require("./listingsManager");
 
 class GeminiLelongAI {
   constructor() {
@@ -274,7 +275,32 @@ Hasilkan output JSON mengikut format wajib.
     ) {
       interest = "Semakan Unit Spesifik";
       stage = "SEMAK_POS_SITE_VISIT";
-      reply = `Untuk semakan senarai penuh unit rumah yang dilelong di Melaka, Tuan/Puan boleh klik dan rujuk terus pangkalan data rasmi kami di sini 👇:\n${SPECIFIC_PROPERTY_URL}\n\nJika ada mana-mana unit yang menarik minat Tuan/Puan, boleh kongsikan di sini untuk saya semakkan dokumen POS dan nilaian pasaran.`;
+
+      const latestListings = listingsManager.getListings(2);
+      let snippet = "";
+      if (latestListings.length > 0) {
+        snippet = "\n\n🔥 *Unit Lelongan Terkini di Melaka:*\n" +
+          latestListings.map(l => listingsManager.formatListingForWhatsApp(l)).join("\n");
+      }
+
+      reply = `Untuk semakan senarai penuh unit rumah yang dilelong di Melaka, Tuan/Puan boleh klik dan rujuk terus pangkalan data rasmi kami di sini 👇:\n${SPECIFIC_PROPERTY_URL}${snippet}\n\nJika ada mana-mana unit yang menarik minat Tuan/Puan, boleh kongsikan di sini untuk saya semakkan dokumen POS dan nilaian pasaran.`;
+    }
+    // 16b. BUYER TANYA LOKASI / JENIS SPESIFIK DALAM LIVE LISTINGS
+    else if (text.includes("pokok mangga") || ((text.includes("apartment") || text.includes("flat")) && (text.includes("ada") || text.includes("cari") || text.includes("unit")))) {
+      interest = "Semakan Unit Terkini";
+      stage = "SEMAK_POS_SITE_VISIT";
+      const matches = listingsManager.findMatchingListings({
+        type: text.includes("apartment") || text.includes("flat") ? "apartment" : null,
+        location: text.includes("pokok mangga") ? "pokok mangga" : null
+      });
+
+      if (matches.length > 0) {
+        reply = `Ya, ada Tuan/Puan! Ini antara unit lelongan terkini yang sepadan di Melaka 👇:\n\n` +
+          matches.slice(0, 2).map(m => listingsManager.formatListingForWhatsApp(m)).join("\n") +
+          `\nBercadang nak beli guna loan bank, LPPSA atau tunai?`;
+      } else {
+        reply = `Untuk semakan unit lelongan terkini, Tuan/Puan boleh rujuk terus pangkalan data rasmi kami di sini 👇:\n${SPECIFIC_PROPERTY_URL}`;
+      }
     }
     // 17. PROSPEK SUDAH BERI BAJET / LOKASI (KB-11)
     else if (this.extractBudget(text) || this.extractLocation(text)) {

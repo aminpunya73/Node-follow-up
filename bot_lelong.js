@@ -1,6 +1,7 @@
 require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
 const { GoogleGenAI } = require('@google/genai');
+const listingsManager = require('./src/services/listingsManager');
 
 const TELEGRAM_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
@@ -57,6 +58,16 @@ const handleMessage = async (msg) => {
 
         const jsonResult = response.text;
         console.log('-> Hasil Gemini (JSON):', jsonResult);
+
+        // Simpan unit ke dalam Pangkalan Data Katalog Langsung (untuk dijawab ke WhatsApp Business)
+        try {
+            const cleanJson = jsonResult.replace(/```json/g, '').replace(/```/g, '').trim();
+            const parsedData = JSON.parse(cleanJson);
+            listingsManager.addListing(parsedData);
+            console.log('-> ✅ Berjaya disegerakkan ke pangkalan data WhatsApp CRM.');
+        } catch (e) {
+            console.warn('-> Tidak dapat parse JSON untuk simpanan:', e.message);
+        }
 
         // Hantar semula hasil JSON ke chat/channel sebagai pengesahan
         await bot.sendMessage(msg.chat.id, `🔍 *Hasil Ekstrak AI:*\n\`\`\`json\n${jsonResult}\n\`\`\``, { parse_mode: 'Markdown' });
