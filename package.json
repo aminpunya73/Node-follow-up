@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "node test/test-all.js"
+    "test": "node test/test-all.js",
+    "telegram": "node src/telegramAuctionBot.js"
   },
   "keywords": [
     "real-estate",
@@ -27,7 +28,7 @@
     "express": "^4.19.2",
     "node-cron": "^3.0.3",
     "node-machine-id": "^1.1.12",
-    "node-telegram-bot-api": "^2.4.0",
+    "node-telegram-bot-api": "^0.66.0",
     "pino": "^9.2.0",
     "qrcode": "^1.5.3",
     "ws": "^8.17.1",
